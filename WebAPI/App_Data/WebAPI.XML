@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:WebAPI.Filter.SwaggerFileUploadFilter">
+            <summary>
+            Swagger 上传文件过滤器
+            </summary>
+            <summary>
+            swagger file upload parameter filter
+            </summary>
+        </member>
+    </members>
+</doc>
