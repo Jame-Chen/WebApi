@@ -109,8 +109,8 @@ public <#=code.Escape(entity)#>()
                 if(entity.KeyMembers.Contains(edmProperty.Name))          
                     keyName="[Key]";
                 var required="";
-                if(!edmProperty.Nullable)
-                    required="[Required(ErrorMessage = \"请输入{0}\")]";
+                //if(!edmProperty.Nullable)
+                //   required="[Required(ErrorMessage = \"请输入{0}\")]";
                 string facetName = "MaxLength";
                 var lengthDes="";
                 var stringLengthDes="";

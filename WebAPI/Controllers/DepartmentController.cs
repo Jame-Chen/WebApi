@@ -23,8 +23,8 @@ namespace WebAPI.Controllers
         [HttpPost]
         public Result AddDepartment(TB_Department Departments)
         {
-
-            return db.AddDepartment(Departments);
+           
+            return  db.AddDepartment(Departments);
         }
         /// <summary>
         /// 修改部门

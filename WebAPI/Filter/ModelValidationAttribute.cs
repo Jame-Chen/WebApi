@@ -19,21 +19,21 @@ namespace WebAPI.Filter
             if (!modelState.IsValid)
             {
                 string error = string.Empty;
-                var errorMessage = modelState.Values.SelectMany(m => m.Errors).Select(m => m.ErrorMessage).First();
-                //foreach (var key in modelState.Keys)
-                //{
-                //    var state = modelState[key];
-                //    if (state.Errors.Any())
-                //    {
-                //        error = key + ":" + state.Errors.First().ErrorMessage;
-                //        if ( state.Errors.First().Exception!=null)
-                //        {
-                //            error+= "|" + state.Errors.First().Exception.Message;
-                //        }
-                //        break;
-                //    }
-                //}
-                Result response = new Result() { Code = "500", Msg = errorMessage };
+               // var errorMessage = modelState.Values.SelectMany(m => m.Errors).Select(m => m.ErrorMessage).First();
+                foreach (var key in modelState.Keys)
+                {
+                    var state = modelState[key];
+                    if (state.Errors.Any())
+                    {
+                        error = key + ":" + state.Errors.First().ErrorMessage;
+                        if (state.Errors.First().Exception != null)
+                        {
+                            error += "|" + state.Errors.First().Exception.Message;
+                        }
+                        break;
+                    }
+                }
+                Result response = new Result() { Code = "500", Msg = error };
                 actionContext.Response = new HttpResponseMessage(HttpStatusCode.Accepted)
                 {
                     Content = new StringContent(JsonConvert.SerializeObject(response), System.Text.Encoding.GetEncoding("UTF-8"), "application/json")

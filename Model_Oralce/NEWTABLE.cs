@@ -25,7 +25,6 @@ namespace Model_Oralce
     			    /// <summary>
         /// N_ID
         /// </summary>
-        [Required(ErrorMessage = "请输入{0}")]
         [Display(Name = "N_ID")]
         [MaxLength(36,ErrorMessage="最多只能输入36个字符")]
         [StringLength(36,ErrorMessage="最多只能输入36个字符")]
