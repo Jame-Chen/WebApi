@@ -76,14 +76,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CookieHelper.cs" />
+    <Compile Include="EmailHelper.cs" />
     <Compile Include="EncryptionMD5.cs" />
+    <Compile Include="ListToDatatable.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="NPOIHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RESTClient.cs" />
+    <Compile Include="RESTResponseEntity.cs" />
     <Compile Include="WithExtensionMultipartFormDataStreamProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{d49cb5c8-19af-40d1-bab7-5051600c889c}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpManagementDetail.cs" />
     <Compile Include="FileUploader.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

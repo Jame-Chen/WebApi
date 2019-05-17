@@ -13,6 +13,9 @@ using NPOI.POIFS;
 using NPOI.Util;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
+using NPOI.XWPF.UserModel;
+using Model;
+using NPOI.OpenXmlFormats.Wordprocessing;
 
 namespace Common
 {
@@ -39,6 +42,8 @@ namespace Common
                 }
             }
         }
+
+
 
         /// <summary>  
         /// DataTable导出到Excel的MemoryStream  
@@ -146,7 +151,7 @@ namespace Common
                 IRow dataRow = sheet.CreateRow(rowIndex);
                 foreach (DataColumn column in dtSource.Columns)
                 {
-                    ICell newCell = dataRow.CreateCell(column.Ordinal);
+                    NPOI.SS.UserModel.ICell newCell = dataRow.CreateCell(column.Ordinal);
                     newCell.CellStyle = contentStyle;
 
                     string drValue = row[column].ToString();
@@ -257,7 +262,9 @@ namespace Common
 
             for (int j = 0; j < cellCount; j++)
             {
-                ICell cell = headerRow.GetCell(j);
+
+                NPOI.SS.UserModel.ICell cell = headerRow.GetCell(j);
+
                 dt.Columns.Add(cell.ToString());
             }
 
@@ -276,6 +283,279 @@ namespace Common
             }
             return dt;
         }
+
+
+        public static string ExpManagementDetail(ExpManagementDetail mange)
+        {
+            XWPFDocument doc = new XWPFDocument();
+            //标题
+            XWPFParagraph p1 = doc.CreateParagraph();
+            XWPFRun r1 = p1.CreateRun();
+            r1.IsBold = true;
+            r1.FontSize = 18;
+            r1.SetFontFamily("华文楷体", FontCharRange.None);
+            //r1.FontFamily = "华文楷体";//设置雅黑字体
+            r1.SetText("排水设施巡查问题清单");
+
+            XWPFParagraph p2 = doc.CreateParagraph();
+            p2.Alignment = ParagraphAlignment.LEFT;
+            XWPFRun r2 = p2.CreateRun();
+            r2.FontSize = 12;
+            r2.SetFontFamily("华文楷体", FontCharRange.None);
+            // r2.FontFamily = "华文楷体";//设置雅黑字体
+            r2.SetText("制表人:张燕剑");
+
+            CT_P doc_p1 = doc.Document.body.GetPArray(0);//标题居中
+            doc_p1.AddNewPPr().AddNewJc().val = ST_Jc.center;
+            //创建表格
+            XWPFTable table = doc.CreateTable(12, 3);//行，列
+
+            XWPFTableRow row_0 = table.GetRow(0);//第一行
+
+            XWPFTableCell cell_0_0 = row_0.GetCell(0);
+
+            //cell_0_0.SetParagraph(SetCellText(doc, table, "制表人:自动生成"));
+
+            cell_0_0.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.restart; //合并行开始
+            //cell_0_0.GetCTTc().AddNewTcPr().AddNewVAlign().val = ST_VerticalJc.center;
+            cell_0_0.SetParagraph(SetCellText(doc, table, "", mange.UrlList[0], (int)(120 * 9525), (int)(180 * 9525)));
+            // cell_0_0.GetCTTc().AddNewTcPr().AddNewVAlign().val = ST_VerticalJc.center;//垂直
+            //row_0.MergeCells(0, 2);
+
+            XWPFTableCell cell_0_1 = row_0.GetCell(1);
+            cell_0_1.SetParagraph(SetCellText(doc, table, "任务号"));
+
+            XWPFTableCell cell_0_2 = row_0.GetCell(2);
+            cell_0_2.SetParagraph(SetCellText(doc, table, mange.S_Mange_Id));
+
+
+            XWPFTableRow row_1 = table.GetRow(1);//第二行
+
+            XWPFTableCell cell_1_0 = row_1.GetCell(0);
+
+
+            cell_1_0.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.@continue; //合并行
+
+            XWPFTableCell cell_1_1 = row_1.GetCell(1);
+            cell_1_1.SetParagraph(SetCellText(doc, table, "接报时间"));
+
+            XWPFTableCell cell_1_2 = row_1.GetCell(2);
+            cell_1_2.SetParagraph(SetCellText(doc, table, mange.Time));
+
+
+
+            XWPFTableRow row_2 = table.GetRow(2);//第三行
+
+            XWPFTableCell cell_2_0 = row_2.GetCell(0);
+            cell_2_0.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.@continue; //合并行
+
+            XWPFTableCell cell_2_1 = row_2.GetCell(1);
+            cell_2_1.SetParagraph(SetCellText(doc, table, "问题大类"));
+
+            XWPFTableCell cell_2_2 = row_2.GetCell(2);
+            cell_2_2.SetParagraph(SetCellText(doc, table, mange.Category));
+
+
+            XWPFTableRow row_3 = table.GetRow(3);//第四行
+
+            XWPFTableCell cell_3_0 = row_3.GetCell(0);
+            cell_3_0.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.@continue; //合并行
+
+            XWPFTableCell cell_3_1 = row_3.GetCell(1);
+            cell_3_1.SetParagraph(SetCellText(doc, table, "问题小类"));
+
+            XWPFTableCell cell_3_2 = row_3.GetCell(2);
+            cell_3_2.SetParagraph(SetCellText(doc, table, mange.Type));
+
+
+            XWPFTableRow row_4 = table.GetRow(4);//第五行
+
+            XWPFTableCell cell_4_0 = row_4.GetCell(0);
+            cell_4_0.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.@continue; //合并行
+
+
+            XWPFTableCell cell_4_1 = row_4.GetCell(1);
+            cell_4_1.SetParagraph(SetCellText(doc, table, "街道"));
+
+            XWPFTableCell cell_4_2 = row_4.GetCell(2);
+            cell_4_2.SetParagraph(SetCellText(doc, table, mange.S_TOWNID));
+
+            XWPFTableRow row_5 = table.GetRow(5);//第六行
+
+            XWPFTableCell cell_5_0 = row_5.GetCell(0);
+            cell_5_0.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.@continue; //合并行
+
+
+            XWPFTableCell cell_5_1 = row_5.GetCell(1);
+            cell_5_1.SetParagraph(SetCellText(doc, table, "处置单位"));
+
+            XWPFTableCell cell_5_2 = row_5.GetCell(2);
+            cell_5_2.SetParagraph(SetCellText(doc, table, mange.MangeCompany));
+
+            XWPFTableRow row_6 = table.GetRow(6);//第七行
+
+            XWPFTableCell cell_6_0 = row_6.GetCell(0);
+            cell_6_0.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.@continue; //合并行
+
+            XWPFTableCell cell_6_1 = row_6.GetCell(1);
+            cell_6_1.SetParagraph(SetCellText(doc, table, "处置人"));
+
+            XWPFTableCell cell_6_2 = row_6.GetCell(2);
+            cell_6_2.SetParagraph(SetCellText(doc, table, mange.MangeMan));
+
+            XWPFTableRow row_7 = table.GetRow(7);//第八行
+
+            XWPFTableCell cell_7_0 = row_7.GetCell(0);
+            cell_7_0.SetParagraph(SetCellText(doc, table, "发生地址：" + mange.Location));
+            row_7.MergeCells(0, 2);/* 合并列 */
+
+            XWPFTableRow row_8 = table.GetRow(8);//第九行
+
+            XWPFTableCell cell_8_0 = row_8.GetCell(0);
+            cell_8_0.SetParagraph(SetCellText(doc, table, "案件描述：" + mange.Desc, 80));
+            row_8.MergeCells(0, 2);/* 合并列 */
+
+            XWPFTableRow row_9 = table.GetRow(9);//第十行
+
+            XWPFTableCell cell_9_0 = row_9.GetCell(0);
+            cell_9_0.SetParagraph(SetCellText(doc, table, "处理要求：请尽快进行处理，并在处理完成后及时反馈到区排水管理所"));
+            row_9.MergeCells(0, 2);/* 合并列 */
+
+            XWPFTableRow row_10 = table.GetRow(10);//第十一行
+
+            XWPFTableCell cell_10_0 = row_10.GetCell(0);
+            cell_10_0.SetParagraph(SetCellText(doc, table, "处理时间：" + mange.CLtime + "天"));
+            row_10.MergeCells(0, 2);/* 合并列 */
+
+            XWPFTableRow row_11 = table.GetRow(11);//第十二行
+
+            XWPFTableCell cell_11_0 = row_11.GetCell(0);
+            cell_11_0.SetParagraph(SetCellText(doc, table, "", mange.MapUrl, (int)(550 * 11525), (int)(300 * 11525)));
+            row_11.MergeCells(0, 2);/* 合并列 */
+
+            XWPFParagraph p3 = doc.CreateParagraph();
+            p3.Alignment = ParagraphAlignment.LEFT;
+            XWPFRun r3 = p3.CreateRun();
+            r3.FontSize = 12;
+            r3.SetFontFamily("华文楷体", FontCharRange.None);
+            // r3.FontFamily = "华文楷体";//设置雅黑字体
+            r3.SetText("上报核实图片");
+
+            XWPFParagraph p4 = doc.CreateParagraph();
+            p4.Alignment = ParagraphAlignment.LEFT;
+            XWPFRun r4 = p4.CreateRun();
+            for (int i = 1; i < mange.UrlList.Count; i++)
+            {
+                using (FileStream picData = new FileStream(mange.UrlList[i], FileMode.Open, FileAccess.Read))
+                {
+                    r4.AddPicture(picData, (int)NPOI.XWPF.UserModel.PictureType.PNG, "11.png", (int)(250 * 9525), (int)(250 * 9525));
+                    if (i%2!=0)
+                    {
+                        r4.AppendText("          ");
+                    }
+                   
+                }
+            }
+
+
+            string strFileName = "";
+            string filePath = HttpContext.Current.Server.MapPath("~/File/");
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            strFileName = filePath + "工单详情.docx";
+            using (MemoryStream ms = new MemoryStream())
+            {
+                doc.Write(ms);
+                ms.Flush();
+                using (FileStream fs = new FileStream(strFileName, FileMode.Create, FileAccess.Write))
+                {
+                    byte[] data = ms.ToArray();
+                    fs.Write(data, 0, data.Length);
+                    fs.Flush();
+                    foreach (string item in mange.UrlList)
+                    {
+                        File.Delete(item);
+                    }
+                    if (!string.IsNullOrEmpty(mange.MapUrl))
+                    {
+                        File.Delete(mange.MapUrl);
+                    }
+                }
+            }
+            return strFileName;
+        }
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// 设置字体格式
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="table"></param>
+        /// <param name="setText"></param>
+        /// <returns></returns>
+        public static XWPFParagraph SetCellText(XWPFDocument doc, XWPFTable table, string setText, int sPos = 0)
+        {
+            //table中的文字格式设置
+            CT_P para = new CT_P();
+            XWPFParagraph pCell = new XWPFParagraph(para, table.Body);
+            pCell.Alignment = ParagraphAlignment.LEFT;//字体居中
+            pCell.VerticalAlignment = TextAlignment.CENTER;//字体居中
+
+            XWPFRun r1c1 = pCell.CreateRun();
+            r1c1.SetText(setText);
+            r1c1.FontSize = 12;
+            r1c1.SetFontFamily("华文楷体", FontCharRange.None);
+            //r1c1.FontFamily = "华文楷体";//设置雅黑字体
+            if (sPos != 0)
+            {
+                r1c1.SetTextPosition(sPos);//设置高度
+            }
+
+
+            return pCell;
+        }
+
+        public static XWPFParagraph SetCellText(XWPFDocument doc, XWPFTable table, string setText, string ImgUrl, int widthEmus, int heightEmus, int sPos = 0)
+        {
+            //table中的文字格式设置
+            CT_P para = new CT_P();
+            XWPFParagraph pCell = new XWPFParagraph(para, table.Body);
+            if (!string.IsNullOrEmpty(setText))
+            {
+                pCell.Alignment = ParagraphAlignment.LEFT;//字体居中
+            }
+            else
+            {
+                pCell.Alignment = ParagraphAlignment.CENTER;//字体居中
+            }
+            pCell.VerticalAlignment = TextAlignment.CENTER;//字体居中
+            XWPFRun r1c1 = pCell.CreateRun();
+            if (!string.IsNullOrEmpty(setText))
+            {
+                r1c1.SetText(setText);
+                r1c1.FontSize = 12;
+                r1c1.SetFontFamily("华文楷体", FontCharRange.None);
+            }
+            //r1c1.FontFamily = "华文楷体";//设置雅黑字体
+            if (sPos != 0)
+            {
+                r1c1.SetTextPosition(sPos);//设置高度
+            }
+            using (FileStream picData = new FileStream(ImgUrl, FileMode.Open, FileAccess.Read))
+            {
+                r1c1.AddPicture(picData, (int)NPOI.XWPF.UserModel.PictureType.PNG, "11.png", widthEmus, heightEmus);
+            }
+            return pCell;
+        }
+
 
     }
 }
