@@ -303,7 +303,7 @@ namespace Common
             r2.FontSize = 12;
             r2.SetFontFamily("华文楷体", FontCharRange.None);
             // r2.FontFamily = "华文楷体";//设置雅黑字体
-            r2.SetText("制表人:张燕剑");
+           // r2.SetText("制表人:张燕剑");
 
             CT_P doc_p1 = doc.Document.body.GetPArray(0);//标题居中
             doc_p1.AddNewPPr().AddNewJc().val = ST_Jc.center;
@@ -326,7 +326,7 @@ namespace Common
             cell_0_1.SetParagraph(SetCellText(doc, table, "任务号"));
 
             XWPFTableCell cell_0_2 = row_0.GetCell(2);
-            cell_0_2.SetParagraph(SetCellText(doc, table, mange.S_Mange_Id));
+            cell_0_2.SetParagraph(SetCellText(doc, table, mange.W_Taskno));
 
 
             XWPFTableRow row_1 = table.GetRow(1);//第二行
@@ -387,7 +387,7 @@ namespace Common
 
 
             XWPFTableCell cell_5_1 = row_5.GetCell(1);
-            cell_5_1.SetParagraph(SetCellText(doc, table, "处置单位"));
+            cell_5_1.SetParagraph(SetCellText(doc, table, "巡视单位"));
 
             XWPFTableCell cell_5_2 = row_5.GetCell(2);
             cell_5_2.SetParagraph(SetCellText(doc, table, mange.MangeCompany));
@@ -418,13 +418,13 @@ namespace Common
             XWPFTableRow row_9 = table.GetRow(9);//第十行
 
             XWPFTableCell cell_9_0 = row_9.GetCell(0);
-            cell_9_0.SetParagraph(SetCellText(doc, table, "处理要求：请尽快进行处理，并在处理完成后及时反馈到区排水管理所"));
+            cell_9_0.SetParagraph(SetCellText(doc, table, "处理要求：请尽快进行处理，并在处理完成后及时进行反馈。"));
             row_9.MergeCells(0, 2);/* 合并列 */
 
             XWPFTableRow row_10 = table.GetRow(10);//第十一行
 
             XWPFTableCell cell_10_0 = row_10.GetCell(0);
-            cell_10_0.SetParagraph(SetCellText(doc, table, "处理时间：" + mange.CLtime + "天"));
+            cell_10_0.SetParagraph(SetCellText(doc, table, "处理时限：" + mange.CLtime + "天"));
             row_10.MergeCells(0, 2);/* 合并列 */
 
             XWPFTableRow row_11 = table.GetRow(11);//第十二行
@@ -448,12 +448,36 @@ namespace Common
             {
                 using (FileStream picData = new FileStream(mange.UrlList[i], FileMode.Open, FileAccess.Read))
                 {
-                    r4.AddPicture(picData, (int)NPOI.XWPF.UserModel.PictureType.PNG, "11.png", (int)(250 * 9525), (int)(250 * 9525));
-                    if (i%2!=0)
+                    r4.AddPicture(picData, (int)NPOI.XWPF.UserModel.PictureType.PNG, "1.png", (int)(250 * 9525), (int)(250 * 9525));
+                    if (i % 2 != 0)
                     {
                         r4.AppendText("          ");
                     }
-                   
+
+                }
+            }
+
+            XWPFParagraph p5 = doc.CreateParagraph();
+            p5.Alignment = ParagraphAlignment.LEFT;
+            XWPFRun r5 = p5.CreateRun();
+            r5.FontSize = 12;
+            r5.SetFontFamily("华文楷体", FontCharRange.None);
+            // r3.FontFamily = "华文楷体";//设置雅黑字体
+            r5.SetText("处置核实图片");
+
+            XWPFParagraph p6 = doc.CreateParagraph();
+            p6.Alignment = ParagraphAlignment.LEFT;
+            XWPFRun r6 = p6.CreateRun();
+            for (int i = 1; i < mange.UrlListCZ.Count; i++)
+            {
+                using (FileStream picData = new FileStream(mange.UrlListCZ[i], FileMode.Open, FileAccess.Read))
+                {
+                    r6.AddPicture(picData, (int)NPOI.XWPF.UserModel.PictureType.PNG, "1.png", (int)(250 * 9525), (int)(250 * 9525));
+                    if (i % 2 != 0)
+                    {
+                        r6.AppendText("          ");
+                    }
+
                 }
             }
 
@@ -464,7 +488,21 @@ namespace Common
             {
                 Directory.CreateDirectory(filePath);
             }
+            bool flag = true;
+            int iname = 1;
             strFileName = filePath + "工单详情.docx";
+            while (flag)
+            {
+                if (File.Exists(strFileName))
+                {
+                    strFileName = filePath + "工单详情(" + iname + ").docx";
+                    iname++;
+                }
+                else {
+                    flag = false;
+                }
+            }
+
             using (MemoryStream ms = new MemoryStream())
             {
                 doc.Write(ms);
@@ -475,6 +513,10 @@ namespace Common
                     fs.Write(data, 0, data.Length);
                     fs.Flush();
                     foreach (string item in mange.UrlList)
+                    {
+                        File.Delete(item);
+                    }
+                    foreach (string item in mange.UrlListCZ)
                     {
                         File.Delete(item);
                     }
