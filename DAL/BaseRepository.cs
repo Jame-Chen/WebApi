@@ -191,9 +191,9 @@ namespace DAL
         /// <param name="strSql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public DbRawSqlQuery<T> SqlQuery(string strSql, params System.Data.Common.DbParameter[] parameters)
-        {
-            return db.Database.SqlQuery<T>(strSql, parameters);
-        }
+        //public DbRawSqlQuery<T> SqlQuery(string strSql, params System.Data.Common.DbParameter[] parameters)
+        //{
+        //    return db.Database.SqlQuery<T>(strSql, parameters);
+        //}
     }
 }

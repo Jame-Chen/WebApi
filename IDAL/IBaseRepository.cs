@@ -24,7 +24,7 @@ namespace IDAL
       
          int ExcuteSqlCommand(string strSql, params System.Data.Common.DbParameter[] parameters);
 
-         DbRawSqlQuery<T> SqlQuery(string strSql, params System.Data.Common.DbParameter[] parameters);
+        // DbRawSqlQuery<T> SqlQuery(string strSql, params System.Data.Common.DbParameter[] parameters);
    
     }
 }

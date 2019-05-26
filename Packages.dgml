@@ -10,33 +10,8 @@
     <Node Id="Antlr 3.4.1.9004" Label="Antlr 3.4.1.9004" Category="包" />
     <Node Id="bootstrap 3.0.0" Label="bootstrap 3.0.0" Category="包" />
     <Node Id="EntityFramework 6.0.0" Label="EntityFramework 6.0.0" Category="包" />
-    <Node Id="log4net 2.0.8" Label="log4net 2.0.8" Category="包" />
-    <Node Id="Microsoft.AspNet.Cors 5.2.3" Label="Microsoft.AspNet.Cors 5.2.3" Category="包" />
-    <Node Id="Microsoft.AspNet.Mvc 5.2.4" Label="Microsoft.AspNet.Mvc 5.2.4" Category="包" />
-    <Node Id="Microsoft.AspNet.Mvc.zh-Hans 5.2.4" Label="Microsoft.AspNet.Mvc.zh-Hans 5.2.4" Category="包" />
-    <Node Id="Microsoft.AspNet.Razor 3.2.4" Label="Microsoft.AspNet.Razor 3.2.4" Category="包" />
-    <Node Id="Microsoft.AspNet.Razor.zh-Hans 3.2.4" Label="Microsoft.AspNet.Razor.zh-Hans 3.2.4" Category="包" />
-    <Node Id="Microsoft.AspNet.Web.Optimization 1.1.1" Label="Microsoft.AspNet.Web.Optimization 1.1.1" Category="包" />
-    <Node Id="Microsoft.AspNet.Web.Optimization.zh-Hans 1.1.1" Label="Microsoft.AspNet.Web.Optimization.zh-Hans 1.1.1" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi 5.0.0" Label="Microsoft.AspNet.WebApi 5.0.0" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.Client 5.2.3" Label="Microsoft.AspNet.WebApi.Client 5.2.3" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.Client.zh-Hans 5.2.3" Label="Microsoft.AspNet.WebApi.Client.zh-Hans 5.2.3" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.Core 5.2.3" Label="Microsoft.AspNet.WebApi.Core 5.2.3" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.Core.zh-Hans 5.2.3" Label="Microsoft.AspNet.WebApi.Core.zh-Hans 5.2.3" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.Cors 5.2.3" Label="Microsoft.AspNet.WebApi.Cors 5.2.3" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.OData 5.7.0" Label="Microsoft.AspNet.WebApi.OData 5.7.0" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.WebHost 5.0.0" Label="Microsoft.AspNet.WebApi.WebHost 5.0.0" Category="包" />
-    <Node Id="Microsoft.AspNet.WebApi.WebHost.zh-Hans 5.0.0" Label="Microsoft.AspNet.WebApi.WebHost.zh-Hans 5.0.0" Category="包" />
-    <Node Id="Microsoft.AspNet.WebPages 3.2.4" Label="Microsoft.AspNet.WebPages 3.2.4" Category="包" />
-    <Node Id="Microsoft.AspNet.WebPages.zh-Hans 3.2.4" Label="Microsoft.AspNet.WebPages.zh-Hans 3.2.4" Category="包" />
-    <Node Id="Microsoft.Data.Edm 5.6.0" Label="Microsoft.Data.Edm 5.6.0" Category="包" />
-    <Node Id="Microsoft.Data.OData 5.6.0" Label="Microsoft.Data.OData 5.6.0" Category="包" />
-    <Node Id="Microsoft.Net.Http 2.0.20710.0" Label="Microsoft.Net.Http 2.0.20710.0" Category="包" />
-    <Node Id="Microsoft.Web.Infrastructure 1.0.0.0" Label="Microsoft.Web.Infrastructure 1.0.0.0" Category="包" />
-    <Node Id="Modernizr 2.6.2" Label="Modernizr 2.6.2" Category="包" />
     <Node Id="Implement\BLL" Label="BLL" Category="项目" />
     <Node Id="EntityFramework 6.0.0" Label="EntityFramework 6.0.0" Category="包" />
-    <Node Id="log4net 2.0.8" Label="log4net 2.0.8" Category="包" />
     <Node Id="Implement\DAL" Label="DAL" Category="项目" />
     <Node Id="EntityFramework 6.0.0" Label="EntityFramework 6.0.0" Category="包" />
     <Node Id="InterFace\IDAL" Label="IDAL" Category="项目" />
@@ -49,45 +24,10 @@
     <Link Source="System.Net.Http.Formatting.Extension 5.2.3.0" Target="System.Net.Http 4.3.4" Category="程序包依赖项" />
     <Link Source="Common" Target="NPOI 2.3.0" Category="安装的程序包" />
     <Link Source="Common" Target="System.Net.Http.Formatting.Extension 5.2.3.0" Category="安装的程序包" />
-    <Link Source="Microsoft.AspNet.Mvc 5.2.4" Target="Microsoft.AspNet.WebPages 3.2.4" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.Mvc 5.2.4" Target="Microsoft.AspNet.Razor 3.2.4" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.Mvc.zh-Hans 5.2.4" Target="Microsoft.AspNet.Mvc 5.2.4" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.Razor.zh-Hans 3.2.4" Target="Microsoft.AspNet.Razor 3.2.4" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.Web.Optimization 1.1.1" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.Web.Optimization.zh-Hans 1.1.1" Target="Microsoft.AspNet.Web.Optimization 1.1.1" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi 5.0.0" Target="Microsoft.AspNet.WebApi.WebHost 5.0.0" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.Client 5.2.3" Target="Microsoft.Net.Http 2.0.20710.0" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.Client.zh-Hans 5.2.3" Target="Microsoft.AspNet.WebApi.Client 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.Core 5.2.3" Target="Microsoft.AspNet.WebApi.Client 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.Core.zh-Hans 5.2.3" Target="Microsoft.AspNet.WebApi.Core 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.Cors 5.2.3" Target="Microsoft.AspNet.WebApi.Core 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.Cors 5.2.3" Target="Microsoft.AspNet.Cors 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.OData 5.7.0" Target="Microsoft.AspNet.WebApi.Client 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.OData 5.7.0" Target="Microsoft.AspNet.WebApi.Core 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.OData 5.7.0" Target="Microsoft.Data.OData 5.6.0" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.WebHost 5.0.0" Target="Microsoft.AspNet.WebApi.Core 5.2.3" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebApi.WebHost.zh-Hans 5.0.0" Target="Microsoft.AspNet.WebApi.WebHost 5.0.0" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebPages 3.2.4" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebPages 3.2.4" Target="Microsoft.AspNet.Razor 3.2.4" Category="程序包依赖项" />
-    <Link Source="Microsoft.AspNet.WebPages.zh-Hans 3.2.4" Target="Microsoft.AspNet.WebPages 3.2.4" Category="程序包依赖项" />
-    <Link Source="Microsoft.Data.OData 5.6.0" Target="Microsoft.Data.Edm 5.6.0" Category="程序包依赖项" />
     <Link Source="WebAPI" Target="Antlr 3.4.1.9004" Category="安装的程序包" />
     <Link Source="WebAPI" Target="bootstrap 3.0.0" Category="安装的程序包" />
     <Link Source="WebAPI" Target="EntityFramework 6.0.0" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="log4net 2.0.8" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.Mvc.zh-Hans 5.2.4" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.Razor.zh-Hans 3.2.4" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.Web.Optimization.zh-Hans 1.1.1" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.WebApi 5.0.0" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.WebApi.Client.zh-Hans 5.2.3" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.WebApi.Core.zh-Hans 5.2.3" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.WebApi.Cors 5.2.3" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.WebApi.OData 5.7.0" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.WebApi.WebHost.zh-Hans 5.0.0" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Microsoft.AspNet.WebPages.zh-Hans 3.2.4" Category="安装的程序包" />
-    <Link Source="WebAPI" Target="Modernizr 2.6.2" Category="安装的程序包" />
     <Link Source="Implement\BLL" Target="EntityFramework 6.0.0" Category="安装的程序包" />
-    <Link Source="Implement\BLL" Target="log4net 2.0.8" Category="安装的程序包" />
     <Link Source="Implement\DAL" Target="EntityFramework 6.0.0" Category="安装的程序包" />
     <Link Source="InterFace\IDAL" Target="EntityFramework 6.0.0" Category="安装的程序包" />
     <Link Source="Model\Model" Target="EntityFramework 6.0.0" Category="安装的程序包" />

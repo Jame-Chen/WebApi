@@ -21,8 +21,9 @@ namespace Model
        public string N_y { get; set; }
        public string MangeMan { get; set; }
        public string MangeCompany { get; set; }
-
+       public string W_Taskno { get; set; }
        public string MapUrl { get; set; }
        public List<string> UrlList { get; set; }
+       public List<string> UrlListCZ { get; set; }
     }
 }
