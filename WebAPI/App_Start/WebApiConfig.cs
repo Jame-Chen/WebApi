@@ -17,9 +17,10 @@ namespace WebAPI
             // Web API configuration and services
             //跨域配置
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
-            config.Filters.Add(new ModelValidationAttribute());
-            config.Filters.Add(new RequestAuthorizeAttribute());
+            //config.Filters.Add(new ModelValidationAttribute());
+            //config.Filters.Add(new RequestAuthorizeAttribute());
             config.Filters.Add(new ExceptionFilter());
+            config.Filters.Add(new ActionFilter());
             // Web API routes
             config.MapHttpAttributeRoutes();
 

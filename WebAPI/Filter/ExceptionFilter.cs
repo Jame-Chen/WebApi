@@ -2,9 +2,12 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Text;
 using System.Web;
 using System.Web.Http.Filters;
 
@@ -30,18 +33,20 @@ namespace WebAPI.Filter
 
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
+
             if (actionExecutedContext.Response == null)
             {
                 actionExecutedContext.Response = GetResponse("500", actionExecutedContext.Exception.Message);
             }
-            string message = string.Format("//--------报错信息-------\r\n消息类型：{0}\r\n消息内容：{1}\r\n引发异常的方法：{2}\r\n引发异常源：{3}"
+            string message = string.Format(" \r\n//--------报错信息-------\r\n消息类型：{0}\r\n消息内容：{1}\r\n引发异常的方法：{2}\r\n引发异常源：{3}\r\n引发异常StackTrace：{4}"
                     , actionExecutedContext.Exception.GetType().Name
                     , actionExecutedContext.Exception.Message
                      , actionExecutedContext.Exception.TargetSite
-                     , actionExecutedContext.Exception.Source + actionExecutedContext.Exception.StackTrace
+                     , actionExecutedContext.Exception.Source
+                     , actionExecutedContext.Exception.StackTrace + "\r\n"
                      );
-            //记录错误日志
 
+            //记录错误日志
             log.Error(message);
             base.OnException(actionExecutedContext);
         }

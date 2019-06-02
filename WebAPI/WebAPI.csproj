@@ -175,6 +175,8 @@
     <Compile Include="App_Start\SwaggerNet.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Filter\ActionFilter.cs" />
     <Compile Include="Filter\ExceptionFilter.cs" />
     <Compile Include="Filter\ModelValidationAttribute.cs" />
     <Compile Include="Filter\RequestAuthorizeAttribute.cs" />
