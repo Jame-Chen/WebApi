@@ -4,6 +4,12 @@
         <name>WebAPI</name>
     </assembly>
     <members>
+        <member name="M:WebAPI.CachingSwaggerProvider.GetControllerDesc">
+            <summary>
+            从API文档中读取控制器描述
+            </summary>
+            <returns>所有控制器描述</returns>
+        </member>
         <member name="T:WebAPI.Controllers.TestController">
             <summary>
             测试
