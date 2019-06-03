@@ -393,5 +393,47 @@ namespace BLL
           
             return result;
         }
+		
+		  public Result GetStaticAll(string Role, string TownId, string Company)
+        {
+            Result result = new Result();
+            List<StaticAllModel> list = new List<StaticAllModel>();
+            try
+            {
+                int year = DateTime.Now.Year;
+                int mm = DateTime.Now.Month;
+                if (Role == "区县管理员" || Role == "区县调度员")
+                {
+                    OracleParameter[] param = new OracleParameter[] { };
+                     list = CurrentRepository.SqlQueryStaticAll("select * from  T_STATISTICAL_ALL", param).ToList();
+                }
+                else if (Role == "街镇管理员" || Role == "街镇调度员")
+                {
+                    OracleParameter[] param = new OracleParameter[] {
+                    new OracleParameter(":townid",TownId)
+                    };
+                     list = CurrentRepository.SqlQueryStaticAll("select * from  t_statistical_tw where s_correspond=:townid", param).ToList();
+                }
+                else if (Role=="养护单位管理员")
+                {
+                     OracleParameter[] param = new OracleParameter[] {
+                    new OracleParameter(":company",Company),
+                    new OracleParameter(":results",OracleDbType.RefCursor)
+                    };
+                     param[1].Direction = ParameterDirection.Output;  
+                     list = CurrentRepository.SqlQueryStaticAll("begin p_statistical_company(:company,:results); end;", param).ToList();
+                }
+                result.Code = "200";
+                result.Msg = "查询成功!";
+                result.Data = list;
+            }
+            catch (Exception e)
+            {
+                result.Code = "500";
+                result.Msg = e.Message;
+                throw;
+            }
+            return result;
+        }
     }
 }
