@@ -30,26 +30,31 @@ namespace BLL
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public Result AddEntity(T entity)
+        public T AddEntity(T entity, bool IsSave = true)
         {
-            Result result = new Result();
             var addEntity = CurrentRepository.AddEntity(entity);
-            _dbSession.Save();
-            result.Data = addEntity;
-            return result;
+            if (IsSave)
+            {
+                _dbSession.Save();
+            }
+            return addEntity;
         }
 
         /// <summary>
         /// 修改实体
         /// </summary>
         /// <param name="entity"></param>
+        /// <param name="IsSave"></param>
         /// <returns></returns>
-        public Result UpdateEntity(T entity)
+        public bool UpdateEntity(T entity, bool IsSave = true)
         {
-            Result result = new Result();
             CurrentRepository.UpdateEntity(entity);
-            _dbSession.Save();
-            return result;
+            bool IsTrue = true;
+            if (IsSave)
+            {
+                IsTrue = _dbSession.Save() > 0;
+            }
+            return IsTrue;
         }
 
         /// <summary>
@@ -57,12 +62,15 @@ namespace BLL
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public Result DeleteEntity(T entity)
+        public bool DeleteEntity(T entity, bool IsSave = true)
         {
-            Result result = new Result();
             CurrentRepository.DeleteEntity(entity);
-            _dbSession.Save();
-            return result;
+            bool IsTrue = true;
+            if (IsSave)
+            {
+                IsTrue = _dbSession.Save() > 0;
+            }
+            return IsTrue;
         }
 
         /// <summary>

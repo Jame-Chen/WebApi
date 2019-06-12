@@ -17,11 +17,11 @@ namespace IBLL
 
         void SetCurrentRepository();
 
-        Result AddEntity(T entity);
+        T AddEntity(T entity, bool IsSave = true);
 
-        Result UpdateEntity(T entity);
+        bool UpdateEntity(T entity, bool IsSave = true);
 
-        Result DeleteEntity(T entity);
+        bool DeleteEntity(T entity, bool IsSave = true);
 
         IQueryable<T> LoadEntities(Expression<Func<T, bool>> whereLambda, bool idTracking = false, bool CreationEnabled = true);
 
