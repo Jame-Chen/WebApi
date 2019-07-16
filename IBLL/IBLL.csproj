@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IBLL.tt</DependentUpon>
     </Compile>
+    <Compile Include="ISysMenuService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

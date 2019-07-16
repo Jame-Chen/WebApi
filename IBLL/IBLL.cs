@@ -14,83 +14,83 @@ using Model;
 namespace IBLL
 {
 		
-	public interface IFileUploaderService:IBaseService<FileUploader>
+	public partial interface IFileUploaderService:IBaseService<FileUploader>
     {
     }
 		
-	public interface ISysAnnouncementService:IBaseService<SysAnnouncement>
+	public partial interface ISysAnnouncementService:IBaseService<SysAnnouncement>
     {
     }
 		
-	public interface ISysDepartmentService:IBaseService<SysDepartment>
+	public partial interface ISysDepartmentService:IBaseService<SysDepartment>
     {
     }
 		
-	public interface ISysDocumentSysDepartmentService:IBaseService<SysDocumentSysDepartment>
+	public partial interface ISysDocumentSysDepartmentService:IBaseService<SysDocumentSysDepartment>
     {
     }
 		
-	public interface ISysDocumentSysPersonService:IBaseService<SysDocumentSysPerson>
+	public partial interface ISysDocumentSysPersonService:IBaseService<SysDocumentSysPerson>
     {
     }
 		
-	public interface ISysEmailService:IBaseService<SysEmail>
+	public partial interface ISysEmailService:IBaseService<SysEmail>
     {
     }
 		
-	public interface ISysEmailTempService:IBaseService<SysEmailTemp>
+	public partial interface ISysEmailTempService:IBaseService<SysEmailTemp>
     {
     }
 		
-	public interface ISysExceptionService:IBaseService<SysException>
+	public partial interface ISysExceptionService:IBaseService<SysException>
     {
     }
 		
-	public interface ISysFieldService:IBaseService<SysField>
+	public partial interface ISysFieldService:IBaseService<SysField>
     {
     }
 		
-	public interface ISysLogService:IBaseService<SysLog>
+	public partial interface ISysLogService:IBaseService<SysLog>
     {
     }
 		
-	public interface ISysMenuService:IBaseService<SysMenu>
+	public partial interface ISysMenuService:IBaseService<SysMenu>
     {
     }
 		
-	public interface ISysMenuSysOperationService:IBaseService<SysMenuSysOperation>
+	public partial interface ISysMenuSysOperationService:IBaseService<SysMenuSysOperation>
     {
     }
 		
-	public interface ISysMenuSysRoleSysOperationService:IBaseService<SysMenuSysRoleSysOperation>
+	public partial interface ISysMenuSysRoleSysOperationService:IBaseService<SysMenuSysRoleSysOperation>
     {
     }
 		
-	public interface ISysMessageService:IBaseService<SysMessage>
+	public partial interface ISysMessageService:IBaseService<SysMessage>
     {
     }
 		
-	public interface ISysMessageTempService:IBaseService<SysMessageTemp>
+	public partial interface ISysMessageTempService:IBaseService<SysMessageTemp>
     {
     }
 		
-	public interface ISysNoticeService:IBaseService<SysNotice>
+	public partial interface ISysNoticeService:IBaseService<SysNotice>
     {
     }
 		
-	public interface ISysOperationService:IBaseService<SysOperation>
+	public partial interface ISysOperationService:IBaseService<SysOperation>
     {
     }
 		
-	public interface ISysPersonService:IBaseService<SysPerson>
+	public partial interface ISysPersonService:IBaseService<SysPerson>
     {
     }
 		
-	public interface ISysRoleService:IBaseService<SysRole>
+	public partial interface ISysRoleService:IBaseService<SysRole>
     {
     }
 		
-	public interface ISysRoleSysPersonService:IBaseService<SysRoleSysPerson>
+	public partial interface ISysRoleSysPersonService:IBaseService<SysRoleSysPerson>
     {
     }
 	    

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IBLL;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,6 +15,11 @@ namespace WebAPI.Controllers
 
     public class TestController : ApiController
     {
+        private ISysMenuService SysMenuService;
+        public TestController(ISysMenuService SysMenuService)
+        {
+            this.SysMenuService = SysMenuService;
+        }
         /// <summary>
         /// 测试
         /// </summary>
@@ -21,6 +28,7 @@ namespace WebAPI.Controllers
         /// <returns></returns>
         public List<string> Test(Test test)
         {
+            List<SysMenu> listMenu = SysMenuService.LoadEntities(l => true).ToList();
             List<string> list = new List<string>() { "1", "2" };
             return list;
         }
