@@ -7,14 +7,14 @@ using System.Linq.Expressions;
 using EntityFramework.Extensions;
 using Repository.Interface;
 using Repository.Base;
-using ModelForSqlServer;
+using Model;
 using System.Data;
 
 namespace Repository
 {
    public  class BaseRepository<T> :IRepository<T> where T :class
    {
-       protected QPContext Context = new QPContext();
+       protected sysEntities Context = new sysEntities();
 
 
        /// <summary>

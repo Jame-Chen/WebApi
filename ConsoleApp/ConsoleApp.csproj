@@ -81,17 +81,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{9a38fdd9-507c-4c19-8b71-795b1c56b3cd}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{bfecc282-31b9-4fbf-890d-edf1ce4ae106}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IBLL\IBLL.csproj">
-      <Project>{b0bcc83c-c8d3-428a-906b-e8430ec45974}</Project>
-      <Name>IBLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{d49cb5c8-19af-40d1-bab7-5051600c889c}</Project>

@@ -68,9 +68,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModelForSqlServer\ModelForSqlServer.csproj">
-      <Project>{79e62c0d-e9ce-49bf-ae32-6932387e19d1}</Project>
-      <Name>ModelForSqlServer</Name>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{d49cb5c8-19af-40d1-bab7-5051600c889c}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
