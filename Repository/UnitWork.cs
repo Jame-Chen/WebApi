@@ -6,14 +6,14 @@ using System.Linq;
 using System.Linq.Expressions;
 using EntityFramework.Extensions;
 using Repository.Interface;
-using ModelForSqlServer;
+using Model;
 using Repository.Base;
 
 namespace Repository
 {
    public  class UnitWork: IUnitWork
    {
-       protected QPContext Context = new QPContext();
+       protected sysEntities Context = new sysEntities();
 
 
        /// <summary>
