@@ -89,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RESTClient.cs" />
     <Compile Include="RESTResponseEntity.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="WithExtensionMultipartFormDataStreamProvider.cs" />
   </ItemGroup>
   <ItemGroup>
