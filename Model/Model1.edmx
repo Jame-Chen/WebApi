@@ -5,607 +5,157 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="sysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="FileUploader">
+        <EntityType Name="Department">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" />
-          <Property Name="Path" Type="nvarchar" MaxLength="200" />
-          <Property Name="FullPath" Type="varchar" MaxLength="500" />
-          <Property Name="Suffix" Type="nvarchar" MaxLength="200" />
-          <Property Name="Size" Type="int" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
+          <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime2" Precision="7" />
+          <Property Name="CreateId" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="SysAnnouncement">
+        <EntityType Name="Menu">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="100" />
-          <Property Name="Message" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
+          <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="Icon" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime2" Precision="7" />
+          <Property Name="CreateId" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="SysDepartment">
+        <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="ParentId" Type="nvarchar" MaxLength="36" />
-          <Property Name="Address" Type="nvarchar" MaxLength="200" />
-          <Property Name="Sort" Type="int" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-          <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="UpdatePerson" Type="nvarchar" MaxLength="200" />
+          <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime2" Precision="7" />
+          <Property Name="CreateId" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="SysDocumentSysDepartment">
+        <EntityType Name="UploadFile">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysDepartmentId" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Sys_Id" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="FileType" Type="nvarchar(max)" />
+          <Property Name="FileSize" Type="bigint" Nullable="false" />
+          <Property Name="Extension" Type="nvarchar(max)" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+          <Property Name="SortCode" Type="int" Nullable="false" />
+          <Property Name="DeleteMark" Type="bit" Nullable="false" />
+          <Property Name="CreateUserId" Type="uniqueidentifier" />
+          <Property Name="CreateUserName" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime2" Precision="7" />
+          <Property Name="Thumbnail" Type="nvarchar(max)" />
+          <Property Name="OwnTable" Type="nvarchar(max)" />
+          <Property Name="OwnId" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="SysDocumentSysPerson">
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysPersonId" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysSysDocumentId_Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SysEmail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysMailId" Type="nvarchar" MaxLength="36" />
-          <Property Name="Subject" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Content" Type="ntext" />
-          <Property Name="Reply_email" Type="nvarchar" MaxLength="200" />
-          <Property Name="Mail_type" Type="nvarchar" MaxLength="200" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="ReadTime" Type="datetime" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysEmailTemp">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Mail_name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Subject" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Content" Type="ntext" />
-          <Property Name="Reply_email" Type="nvarchar" MaxLength="200" />
-          <Property Name="IsDefault" Type="nvarchar" MaxLength="200" />
-          <Property Name="Mail_type" Type="nvarchar" MaxLength="200" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysException">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="LeiXing" Type="nvarchar" MaxLength="200" />
-          <Property Name="Message" Type="nvarchar" MaxLength="4000" />
-          <Property Name="Result" Type="nvarchar" MaxLength="200" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysField">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="MyTexts" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="ParentId" Type="nvarchar" MaxLength="36" />
-          <Property Name="MyTables" Type="nvarchar" MaxLength="200" />
-          <Property Name="MyColums" Type="nvarchar" MaxLength="200" />
-          <Property Name="Sort" Type="int" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-          <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="UpdatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysLog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="PersonId" Type="nvarchar" MaxLength="36" />
-          <Property Name="Message" Type="nvarchar" MaxLength="4000" />
-          <Property Name="Result" Type="nvarchar" MaxLength="200" />
-          <Property Name="MenuId" Type="nvarchar" MaxLength="36" />
-          <Property Name="Ip" Type="nvarchar" MaxLength="200" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysMenu">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="ParentId" Type="nvarchar" MaxLength="36" />
-          <Property Name="Url" Type="nvarchar" MaxLength="200" />
-          <Property Name="Iconic" Type="nvarchar" MaxLength="200" />
-          <Property Name="Sort" Type="int" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="UpdatePerson" Type="nvarchar" MaxLength="200" />
-          <Property Name="IsLeaf" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysMenuSysOperation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysMenuId" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysOperationId" Type="nvarchar" MaxLength="36" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SysMenuSysRoleSysOperation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysMenuId" Type="nvarchar" MaxLength="36" />
-          <Property Name="SysOperationId" Type="nvarchar" MaxLength="36" />
-          <Property Name="SysRoleId" Type="nvarchar" MaxLength="36" />
-        </EntityType>
-        <EntityType Name="SysMessage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Content" Type="nvarchar" MaxLength="400" />
-          <Property Name="SysMessageTempId" Type="nvarchar" MaxLength="36" />
-          <Property Name="MessageType" Type="nvarchar" MaxLength="200" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="ReadTime" Type="datetime" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysMessageTemp">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="MessageName" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Content" Type="nvarchar" MaxLength="400" />
-          <Property Name="IsDefault" Type="nvarchar" MaxLength="200" />
-          <Property Name="MessageType" Type="nvarchar" MaxLength="200" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysNotice">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Message" Type="nvarchar" MaxLength="4000" />
-          <Property Name="LostTime" Type="datetime" />
-          <Property Name="PersonId" Type="nvarchar" MaxLength="36" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysOperation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" />
-          <Property Name="Function" Type="nvarchar" MaxLength="200" />
-          <Property Name="Iconic" Type="nvarchar" MaxLength="200" />
-          <Property Name="Sort" Type="int" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysPerson">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="MyName" Type="nvarchar" MaxLength="200" />
-          <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="SurePassword" Type="nvarchar" MaxLength="200" />
-          <Property Name="Sex" Type="nvarchar" MaxLength="200" />
-          <Property Name="SysDepartmentId" Type="nvarchar" MaxLength="36" />
-          <Property Name="Position" Type="nvarchar" MaxLength="200" />
-          <Property Name="MobilePhoneNumber" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="200" />
-          <Property Name="Province" Type="nvarchar" MaxLength="200" />
-          <Property Name="City" Type="nvarchar" MaxLength="200" />
-          <Property Name="Village" Type="nvarchar" MaxLength="200" />
-          <Property Name="Address" Type="nvarchar" MaxLength="200" />
-          <Property Name="EmailAddress" Type="nvarchar" MaxLength="200" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
-          <Property Name="State" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-          <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="LogonNum" Type="int" />
-          <Property Name="LogonTime" Type="datetime" />
-          <Property Name="LogonIP" Type="nvarchar" MaxLength="200" />
-          <Property Name="LastLogonTime" Type="datetime" />
-          <Property Name="LastLogonIP" Type="nvarchar" MaxLength="200" />
-          <Property Name="PageStyle" Type="nvarchar" MaxLength="200" />
-          <Property Name="UpdatePerson" Type="nvarchar" MaxLength="200" />
-          <Property Name="Version" Type="timestamp" StoreGeneratedPattern="Computed" />
-          <Property Name="HDpic" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
-          <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="UpdatePerson" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="SysRoleSysPerson">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysPersonId" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="SysRoleId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Account" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime2" Precision="7" />
+          <Property Name="CreateId" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="sysModelStoreContainer">
-          <EntitySet Name="FileUploader" EntityType="Self.FileUploader" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysAnnouncement" EntityType="Self.SysAnnouncement" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysDepartment" EntityType="Self.SysDepartment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysDocumentSysDepartment" EntityType="Self.SysDocumentSysDepartment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysDocumentSysPerson" EntityType="Self.SysDocumentSysPerson" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysEmail" EntityType="Self.SysEmail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysEmailTemp" EntityType="Self.SysEmailTemp" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysException" EntityType="Self.SysException" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysField" EntityType="Self.SysField" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysLog" EntityType="Self.SysLog" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysMenu" EntityType="Self.SysMenu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysMenuSysOperation" EntityType="Self.SysMenuSysOperation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysMenuSysRoleSysOperation" EntityType="Self.SysMenuSysRoleSysOperation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysMessage" EntityType="Self.SysMessage" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysMessageTemp" EntityType="Self.SysMessageTemp" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysNotice" EntityType="Self.SysNotice" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysOperation" EntityType="Self.SysOperation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysPerson" EntityType="Self.SysPerson" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysRole" EntityType="Self.SysRole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SysRoleSysPerson" EntityType="Self.SysRoleSysPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UploadFile" EntityType="Self.UploadFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="sysEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FileUploader" EntityType="sysModel.FileUploader" />
-          <EntitySet Name="SysAnnouncement" EntityType="sysModel.SysAnnouncement" />
-          <EntitySet Name="SysDepartment" EntityType="sysModel.SysDepartment" />
-          <EntitySet Name="SysDocumentSysDepartment" EntityType="sysModel.SysDocumentSysDepartment" />
-          <EntitySet Name="SysDocumentSysPerson" EntityType="sysModel.SysDocumentSysPerson" />
-          <EntitySet Name="SysEmail" EntityType="sysModel.SysEmail" />
-          <EntitySet Name="SysEmailTemp" EntityType="sysModel.SysEmailTemp" />
-          <EntitySet Name="SysException" EntityType="sysModel.SysException" />
-          <EntitySet Name="SysField" EntityType="sysModel.SysField" />
-          <EntitySet Name="SysLog" EntityType="sysModel.SysLog" />
-          <EntitySet Name="SysMenu" EntityType="sysModel.SysMenu" />
-          <EntitySet Name="SysMenuSysOperation" EntityType="sysModel.SysMenuSysOperation" />
-          <EntitySet Name="SysMenuSysRoleSysOperation" EntityType="sysModel.SysMenuSysRoleSysOperation" />
-          <EntitySet Name="SysMessage" EntityType="sysModel.SysMessage" />
-          <EntitySet Name="SysMessageTemp" EntityType="sysModel.SysMessageTemp" />
-          <EntitySet Name="SysNotice" EntityType="sysModel.SysNotice" />
-          <EntitySet Name="SysOperation" EntityType="sysModel.SysOperation" />
-          <EntitySet Name="SysPerson" EntityType="sysModel.SysPerson" />
-          <EntitySet Name="SysRole" EntityType="sysModel.SysRole" />
-          <EntitySet Name="SysRoleSysPerson" EntityType="sysModel.SysRoleSysPerson" />
+          <EntitySet Name="Department" EntityType="sysModel.Department" />
+          <EntitySet Name="Menu" EntityType="sysModel.Menu" />
+          <EntitySet Name="Role" EntityType="sysModel.Role" />
+          <EntitySet Name="UploadFile" EntityType="sysModel.UploadFile" />
+          <EntitySet Name="User" EntityType="sysModel.User" />
         </EntityContainer>
-        <EntityType Name="FileUploader">
+        <EntityType Name="Department">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Path" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="FullPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Suffix" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Size" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="7" />
+          <Property Name="CreateId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="SysAnnouncement">
+        <EntityType Name="Menu">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="7" />
+          <Property Name="CreateId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="SysDepartment">
+        <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ParentId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Sort" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
-          <Property Name="UpdatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="7" />
+          <Property Name="CreateId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="SysDocumentSysDepartment">
+        <EntityType Name="UploadFile">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysDepartmentId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Sys_Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileSize" Type="Int64" Nullable="false" />
+          <Property Name="Extension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+          <Property Name="SortCode" Type="Int32" Nullable="false" />
+          <Property Name="DeleteMark" Type="Boolean" Nullable="false" />
+          <Property Name="CreateUserId" Type="Guid" />
+          <Property Name="CreateUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="7" />
+          <Property Name="Thumbnail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OwnTable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OwnId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="SysDocumentSysPerson">
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysPersonId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysSysDocumentId_Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysEmail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysMailId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Reply_email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Mail_type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ReadTime" Type="DateTime" Precision="3" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysEmailTemp">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Mail_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Reply_email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="IsDefault" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Mail_type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysException">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="LeiXing" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Result" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysField">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="MyTexts" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ParentId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="MyTables" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MyColums" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Sort" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
-          <Property Name="UpdatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysLog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="PersonId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Result" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MenuId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Ip" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysMenu">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ParentId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Iconic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Sort" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
-          <Property Name="UpdatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="IsLeaf" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysMenuSysOperation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysMenuId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysOperationId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysMenuSysRoleSysOperation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysMenuId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysOperationId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysRoleId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysMessage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Content" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="SysMessageTempId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="MessageType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ReadTime" Type="DateTime" Precision="3" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysMessageTemp">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="MessageName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Content" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="IsDefault" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MessageType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysNotice">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="LostTime" Type="DateTime" Precision="3" />
-          <Property Name="PersonId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysOperation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Function" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Iconic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Sort" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysPerson">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="SurePassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="SysDepartmentId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Position" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MobilePhoneNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Province" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Village" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="EmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
-          <Property Name="LogonNum" Type="Int32" />
-          <Property Name="LogonTime" Type="DateTime" Precision="3" />
-          <Property Name="LogonIP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LastLogonTime" Type="DateTime" Precision="3" />
-          <Property Name="LastLogonIP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PageStyle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Version" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="HDpic" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="SysRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
-          <Property Name="UpdatePerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SysRoleSysPerson">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysPersonId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
-          <Property Name="SysRoleId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="7" />
+          <Property Name="CreateId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -613,299 +163,74 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="sysModelStoreContainer" CdmEntityContainer="sysEntities">
-          <EntitySetMapping Name="FileUploader">
-            <EntityTypeMapping TypeName="sysModel.FileUploader">
-              <MappingFragment StoreEntitySet="FileUploader">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="sysModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="CreateId" ColumnName="CreateId" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
-                <ScalarProperty Name="FullPath" ColumnName="FullPath" />
-                <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysAnnouncement">
-            <EntityTypeMapping TypeName="sysModel.SysAnnouncement">
-              <MappingFragment StoreEntitySet="SysAnnouncement">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysDepartment">
-            <EntityTypeMapping TypeName="sysModel.SysDepartment">
-              <MappingFragment StoreEntitySet="SysDepartment">
-                <ScalarProperty Name="UpdatePerson" ColumnName="UpdatePerson" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SysDocumentSysDepartment">
-            <EntityTypeMapping TypeName="sysModel.SysDocumentSysDepartment">
-              <MappingFragment StoreEntitySet="SysDocumentSysDepartment">
-                <ScalarProperty Name="Sys_Id" ColumnName="Sys_Id" />
-                <ScalarProperty Name="SysDepartmentId" ColumnName="SysDepartmentId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysDocumentSysPerson">
-            <EntityTypeMapping TypeName="sysModel.SysDocumentSysPerson">
-              <MappingFragment StoreEntitySet="SysDocumentSysPerson">
-                <ScalarProperty Name="SysSysDocumentId_Id" ColumnName="SysSysDocumentId_Id" />
-                <ScalarProperty Name="SysPersonId" ColumnName="SysPersonId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysEmail">
-            <EntityTypeMapping TypeName="sysModel.SysEmail">
-              <MappingFragment StoreEntitySet="SysEmail">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="sysModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="CreateId" ColumnName="CreateId" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="ReadTime" ColumnName="ReadTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Mail_type" ColumnName="Mail_type" />
-                <ScalarProperty Name="Reply_email" ColumnName="Reply_email" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="SysMailId" ColumnName="SysMailId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysEmailTemp">
-            <EntityTypeMapping TypeName="sysModel.SysEmailTemp">
-              <MappingFragment StoreEntitySet="SysEmailTemp">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Mail_type" ColumnName="Mail_type" />
-                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
-                <ScalarProperty Name="Reply_email" ColumnName="Reply_email" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Mail_name" ColumnName="Mail_name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysException">
-            <EntityTypeMapping TypeName="sysModel.SysException">
-              <MappingFragment StoreEntitySet="SysException">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Result" ColumnName="Result" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="LeiXing" ColumnName="LeiXing" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysField">
-            <EntityTypeMapping TypeName="sysModel.SysField">
-              <MappingFragment StoreEntitySet="SysField">
-                <ScalarProperty Name="UpdatePerson" ColumnName="UpdatePerson" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-                <ScalarProperty Name="MyColums" ColumnName="MyColums" />
-                <ScalarProperty Name="MyTables" ColumnName="MyTables" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="MyTexts" ColumnName="MyTexts" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysLog">
-            <EntityTypeMapping TypeName="sysModel.SysLog">
-              <MappingFragment StoreEntitySet="SysLog">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Ip" ColumnName="Ip" />
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="Result" ColumnName="Result" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysMenu">
-            <EntityTypeMapping TypeName="sysModel.SysMenu">
-              <MappingFragment StoreEntitySet="SysMenu">
-                <ScalarProperty Name="IsLeaf" ColumnName="IsLeaf" />
-                <ScalarProperty Name="UpdatePerson" ColumnName="UpdatePerson" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-                <ScalarProperty Name="Iconic" ColumnName="Iconic" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SysMenuSysOperation">
-            <EntityTypeMapping TypeName="sysModel.SysMenuSysOperation">
-              <MappingFragment StoreEntitySet="SysMenuSysOperation">
-                <ScalarProperty Name="SysOperationId" ColumnName="SysOperationId" />
-                <ScalarProperty Name="SysMenuId" ColumnName="SysMenuId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysMenuSysRoleSysOperation">
-            <EntityTypeMapping TypeName="sysModel.SysMenuSysRoleSysOperation">
-              <MappingFragment StoreEntitySet="SysMenuSysRoleSysOperation">
-                <ScalarProperty Name="SysRoleId" ColumnName="SysRoleId" />
-                <ScalarProperty Name="SysOperationId" ColumnName="SysOperationId" />
-                <ScalarProperty Name="SysMenuId" ColumnName="SysMenuId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysMessage">
-            <EntityTypeMapping TypeName="sysModel.SysMessage">
-              <MappingFragment StoreEntitySet="SysMessage">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="sysModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="CreateId" ColumnName="CreateId" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="ReadTime" ColumnName="ReadTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
-                <ScalarProperty Name="SysMessageTempId" ColumnName="SysMessageTempId" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysMessageTemp">
-            <EntityTypeMapping TypeName="sysModel.SysMessageTemp">
-              <MappingFragment StoreEntitySet="SysMessageTemp">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
-                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="MessageName" ColumnName="MessageName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysNotice">
-            <EntityTypeMapping TypeName="sysModel.SysNotice">
-              <MappingFragment StoreEntitySet="SysNotice">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="LostTime" ColumnName="LostTime" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysOperation">
-            <EntityTypeMapping TypeName="sysModel.SysOperation">
-              <MappingFragment StoreEntitySet="SysOperation">
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-                <ScalarProperty Name="Iconic" ColumnName="Iconic" />
-                <ScalarProperty Name="Function" ColumnName="Function" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SysPerson">
-            <EntityTypeMapping TypeName="sysModel.SysPerson">
-              <MappingFragment StoreEntitySet="SysPerson">
-                <ScalarProperty Name="HDpic" ColumnName="HDpic" />
-                <ScalarProperty Name="Version" ColumnName="Version" />
-                <ScalarProperty Name="UpdatePerson" ColumnName="UpdatePerson" />
-                <ScalarProperty Name="PageStyle" ColumnName="PageStyle" />
-                <ScalarProperty Name="LastLogonIP" ColumnName="LastLogonIP" />
-                <ScalarProperty Name="LastLogonTime" ColumnName="LastLogonTime" />
-                <ScalarProperty Name="LogonIP" ColumnName="LogonIP" />
-                <ScalarProperty Name="LogonTime" ColumnName="LogonTime" />
-                <ScalarProperty Name="LogonNum" ColumnName="LogonNum" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+          <EntitySetMapping Name="UploadFile">
+            <EntityTypeMapping TypeName="sysModel.UploadFile">
+              <MappingFragment StoreEntitySet="UploadFile">
+                <ScalarProperty Name="OwnId" ColumnName="OwnId" />
+                <ScalarProperty Name="OwnTable" ColumnName="OwnTable" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Village" ColumnName="Village" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Province" ColumnName="Province" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="MobilePhoneNumber" ColumnName="MobilePhoneNumber" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="SysDepartmentId" ColumnName="SysDepartmentId" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="SurePassword" ColumnName="SurePassword" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="MyName" ColumnName="MyName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysRole">
-            <EntityTypeMapping TypeName="sysModel.SysRole">
-              <MappingFragment StoreEntitySet="SysRole">
-                <ScalarProperty Name="UpdatePerson" ColumnName="UpdatePerson" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="DeleteMark" ColumnName="DeleteMark" />
+                <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SysRoleSysPerson">
-            <EntityTypeMapping TypeName="sysModel.SysRoleSysPerson">
-              <MappingFragment StoreEntitySet="SysRoleSysPerson">
-                <ScalarProperty Name="SysRoleId" ColumnName="SysRoleId" />
-                <ScalarProperty Name="SysPersonId" ColumnName="SysPersonId" />
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="sysModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="CreateId" ColumnName="CreateId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

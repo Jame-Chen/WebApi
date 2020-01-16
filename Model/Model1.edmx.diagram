@@ -5,26 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1e7a14e6af9c4c3582a9d62848d85da6" Name="Diagram1" ZoomLevel="100" ShowGrid="false">
-        <EntityTypeShape EntityType="sysModel.FileUploader" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="sysModel.SysAnnouncement" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="sysModel.SysDepartment" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="sysModel.SysDocumentSysDepartment" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="sysModel.SysDocumentSysPerson" Width="1.5" PointX="4.75" PointY="3.75" />
-        <EntityTypeShape EntityType="sysModel.SysEmail" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="sysModel.SysEmailTemp" Width="1.5" PointX="6.75" PointY="4.75" />
-        <EntityTypeShape EntityType="sysModel.SysException" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="sysModel.SysField" Width="1.5" PointX="2.75" PointY="7.75" />
-        <EntityTypeShape EntityType="sysModel.SysLog" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="sysModel.SysMenu" Width="1.5" PointX="8.75" PointY="4.75" />
-        <EntityTypeShape EntityType="sysModel.SysMenuSysOperation" Width="1.5" PointX="4.75" PointY="8.75" />
-        <EntityTypeShape EntityType="sysModel.SysMenuSysRoleSysOperation" Width="1.5" PointX="6.75" PointY="9.75" />
-        <EntityTypeShape EntityType="sysModel.SysMessage" Width="1.5" PointX="8.75" PointY="9.75" />
-        <EntityTypeShape EntityType="sysModel.SysMessageTemp" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="sysModel.SysNotice" Width="1.5" PointX="10.75" PointY="4.75" />
-        <EntityTypeShape EntityType="sysModel.SysOperation" Width="1.5" PointX="10.75" PointY="8.75" />
-        <EntityTypeShape EntityType="sysModel.SysPerson" Width="1.5" PointX="0.75" PointY="11.75" />
-        <EntityTypeShape EntityType="sysModel.SysRole" Width="1.5" PointX="2.75" PointY="11.75" />
-        <EntityTypeShape EntityType="sysModel.SysRoleSysPerson" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="sysModel.Department" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="sysModel.Menu" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="sysModel.Role" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="sysModel.UploadFile" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="sysModel.User" Width="1.5" PointX="2.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

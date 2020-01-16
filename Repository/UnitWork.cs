@@ -11,16 +11,16 @@ using Repository.Base;
 
 namespace Repository
 {
-   public  class UnitWork: IUnitWork
-   {
-       protected sysEntities Context = new sysEntities();
+    public class UnitWork : IUnitWork
+    {
+        protected sysEntities Context = new sysEntities();
 
 
-       /// <summary>
+        /// <summary>
         /// 根据过滤条件，获取记录
         /// </summary>
         /// <param name="exp">The exp.</param>
-        public IQueryable<T> Find<T>(Expression<Func<T, bool>> exp = null) where T : class 
+        public IQueryable<T> Find<T>(Expression<Func<T, bool>> exp = null) where T : class
         {
             return Filter(exp);
         }
@@ -33,7 +33,7 @@ namespace Repository
         /// <summary>
         /// 查找单个
         /// </summary>
-        public T FindSingle<T>(Expression<Func<T, bool>> exp) where T:class 
+        public T FindSingle<T>(Expression<Func<T, bool>> exp) where T : class
         {
             return Context.Set<T>().AsNoTracking().FirstOrDefault(exp);
         }
@@ -44,7 +44,7 @@ namespace Repository
         /// <param name="pageindex">The pageindex.</param>
         /// <param name="pagesize">The pagesize.</param>
         /// <param name="orderby">排序，格式如："Id"/"Id descending"</param>
-        public IQueryable<T> Find<T,S>(int pageindex, int pagesize, out int Total ,Expression<Func<T,S>> orderby , Expression<Func<T, bool>> exp = null,bool isAsc=true) where T : class
+        public IQueryable<T> Find<T, S>(int pageindex, int pagesize, out int Total, Expression<Func<T, S>> orderby, Expression<Func<T, bool>> exp = null, bool isAsc = true) where T : class
         {
             if (pageindex < 1) pageindex = 1;
             IQueryable<T> query = Filter(exp);
@@ -90,7 +90,7 @@ namespace Repository
             Context.Set<T>().AddRange(entities);
         }
 
-        public void Update<T>(T entity) where T:class
+        public void Update<T>(T entity) where T : class
         {
             var entry = this.Context.Entry(entity);
             //todo:如果状态没有任何更改，会报错
@@ -112,7 +112,7 @@ namespace Repository
             }
         }
 
-        public void Delete<T>(T entity) where T:class
+        public void Delete<T>(T entity) where T : class
         {
             Context.Set<T>().Remove(entity);
         }
@@ -122,7 +122,7 @@ namespace Repository
         /// </summary>
         /// <param name="identityExp">The identity exp.</param>
         /// <param name="entity">The entity.</param>
-        public void Update<T>(Expression<Func<T, object>> identityExp, T entity) where T:class
+        public void Update<T>(Expression<Func<T, object>> identityExp, T entity) where T : class
         {
             Context.Set<T>().AddOrUpdate(identityExp, entity);
         }
@@ -133,7 +133,7 @@ namespace Repository
         /// </summary>
         /// <param name="where">The where.</param>
         /// <param name="entity">The entity.</param>
-        public void Update<T>(Expression<Func<T, bool>> where, Expression<Func<T, T>> entity) where T:class
+        public void Update<T>(Expression<Func<T, bool>> where, Expression<Func<T, T>> entity) where T : class
         {
             Context.Set<T>().Where(where).Update(entity);
         }
@@ -153,7 +153,7 @@ namespace Repository
             {
                 throw new Exception(e.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage);
             }
-          
+
         }
 
         private IQueryable<T> Filter<T>(Expression<Func<T, bool>> exp) where T : class
@@ -164,8 +164,8 @@ namespace Repository
             return dbSet;
         }
 
-       public void ExecuteSql(string sql)
-       {
+        public void ExecuteSql(string sql)
+        {
             Context.Database.ExecuteSqlCommand(sql);
         }
 
