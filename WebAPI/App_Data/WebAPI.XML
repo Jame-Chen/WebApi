@@ -15,7 +15,7 @@
             测试
             </summary>
         </member>
-        <member name="M:WebAPI.Controllers.TestController.Test(WebAPI.Controllers.Test)">
+        <member name="M:WebAPI.Controllers.TestController.Test">
             <summary>
             测试
             </summary>
