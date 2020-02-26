@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Repository;
 using Repository.Interface;
 using Repository.Base;
+using Model;
 
 namespace Service
 {
@@ -27,14 +28,51 @@ namespace Service
             return Repository.Find(f => true).ToList();
         }
 
-        public void Add(T entity)
+        public Result Add(T entity)
         {
-            Repository.Add(entity);
+            Result ret = new Result();
+            try
+            {
+                Repository.Add(entity);
+            }
+            catch (Exception e)
+            {
+                ret.Code = "500";
+                ret.Msg = e.Message;
+                throw;
+            }
+            return ret;
         }
 
-        public void Update(T entity)
+        public Result Update(T entity)
         {
-            Repository.Update(entity);
+            Result ret = new Result();
+            try
+            {
+                Repository.Update(entity);
+            }
+            catch (Exception e)
+            {
+                ret.Code = "500";
+                ret.Msg = e.Message;
+                throw;
+            }
+            return ret;
+        }
+        public Result Delete(T entity)
+        {
+            Result ret = new Result();
+            try
+            {
+                Repository.Delete(entity);
+            }
+            catch (Exception e)
+            {
+                ret.Code = "500";
+                ret.Msg = e.Message;
+                throw;
+            }
+            return ret;
         }
     }
 }
