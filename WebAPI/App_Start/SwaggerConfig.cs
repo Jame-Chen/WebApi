@@ -22,7 +22,8 @@ namespace WebAPI
                 {
                     c.OperationFilter<SwaggerFileUploadFilter>();
                     c.SingleApiVersion("v1", "WebApi½Ó¿Ú");
-                    c.IncludeXmlComments(GetXmlCommentsPath());
+                    c.IncludeXmlComments(GetXmlCommentsPath("WebAPI"));
+                    c.IncludeXmlComments(GetXmlCommentsPath("Model"));
                     c.CustomProvider((defaultProvider) => new CachingSwaggerProvider(defaultProvider));
 
                 })
@@ -33,9 +34,9 @@ namespace WebAPI
                 });
         }
 
-        private static string GetXmlCommentsPath()
+        private static string GetXmlCommentsPath(string Name)
         {
-            return string.Format("{0}/App_Data/WebAPI.XML", System.AppDomain.CurrentDomain.BaseDirectory);
+            return string.Format("{0}/bin/{1}.XML", System.AppDomain.CurrentDomain.BaseDirectory,Name);
         }
 
     }
