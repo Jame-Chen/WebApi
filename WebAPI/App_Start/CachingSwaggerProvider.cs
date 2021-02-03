@@ -111,7 +111,7 @@ namespace WebAPI
         private static void GetControllerDescByProject(string subName, string endsWith, ConcurrentDictionary<string, string> controllerDescDict)
         {
         
-            string xmlpath = Directory.GetFiles(System.AppDomain.CurrentDomain.BaseDirectory + "App_Data\\").FirstOrDefault(n => n.ToLower().EndsWith(subName.ToLower() + ".xml"));
+            string xmlpath = Directory.GetFiles(System.AppDomain.CurrentDomain.BaseDirectory + "bin\\").FirstOrDefault(n => n.ToLower().EndsWith(subName.ToLower() + ".xml"));
 
             if (File.Exists(xmlpath))
             {

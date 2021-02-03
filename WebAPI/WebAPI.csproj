@@ -221,10 +221,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\sys.mdf" />
-    <Content Include="App_Data\sys_log.ldf">
-      <DependentUpon>sys.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controllers\T4\Controller.tt">
